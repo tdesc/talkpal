@@ -1,5 +1,6 @@
 
 import '../models/user.dart';
+import '../states/news.dart';
 import '../states/events.dart';
 import '../states/sessions.dart';
 
@@ -11,6 +12,8 @@ abstract class AppActions extends ReduxActions {
 
   AppActions._();
   factory AppActions() => new _$AppActions();
+
+  NewsActions get news;
 
   EventsActions get events;
 

@@ -19,6 +19,9 @@ abstract class SessionsActions extends ReduxActions {
   ActionDispatcher<Session> remove;
   ActionDispatcher<String> setCurrent;
 
+  ActionDispatcher<Session> join;
+  ActionDispatcher<Session> leave;
+
   ActionDispatcher<ParticipantPayload> updateParticipant;
   ActionDispatcher<ParticipantPayload> removeParticipant;
 

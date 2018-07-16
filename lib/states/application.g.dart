@@ -28,6 +28,8 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
     final result = <Object>[
       'user',
       serializers.serialize(object.user, specifiedType: const FullType(User)),
+      'news',
+      serializers.serialize(object.news, specifiedType: const FullType(News)),
       'events',
       serializers.serialize(object.events,
           specifiedType: const FullType(Events)),
@@ -54,6 +56,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.user.replace(serializers.deserialize(value,
               specifiedType: const FullType(User)) as User);
           break;
+        case 'news':
+          result.news.replace(serializers.deserialize(value,
+              specifiedType: const FullType(News)) as News);
+          break;
         case 'events':
           result.events.replace(serializers.deserialize(value,
               specifiedType: const FullType(Events)) as Events);
@@ -73,6 +79,8 @@ class _$AppState extends AppState {
   @override
   final User user;
   @override
+  final News news;
+  @override
   final Events events;
   @override
   final Sessions sessions;
@@ -80,8 +88,9 @@ class _$AppState extends AppState {
   factory _$AppState([void updates(AppStateBuilder b)]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.user, this.events, this.sessions}) : super._() {
+  _$AppState._({this.user, this.news, this.events, this.sessions}) : super._() {
     if (user == null) throw new BuiltValueNullFieldError('AppState', 'user');
+    if (news == null) throw new BuiltValueNullFieldError('AppState', 'news');
     if (events == null)
       throw new BuiltValueNullFieldError('AppState', 'events');
     if (sessions == null)
@@ -100,20 +109,23 @@ class _$AppState extends AppState {
     if (identical(other, this)) return true;
     if (other is! AppState) return false;
     return user == other.user &&
+        news == other.news &&
         events == other.events &&
         sessions == other.sessions;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, user.hashCode), events.hashCode), sessions.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, user.hashCode), news.hashCode), events.hashCode),
+        sessions.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AppState')
           ..add('user', user)
+          ..add('news', news)
           ..add('events', events)
           ..add('sessions', sessions))
         .toString();
@@ -126,6 +138,10 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   UserBuilder _user;
   UserBuilder get user => _$this._user ??= new UserBuilder();
   set user(UserBuilder user) => _$this._user = user;
+
+  NewsBuilder _news;
+  NewsBuilder get news => _$this._news ??= new NewsBuilder();
+  set news(NewsBuilder news) => _$this._news = news;
 
   EventsBuilder _events;
   EventsBuilder get events => _$this._events ??= new EventsBuilder();
@@ -140,6 +156,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   AppStateBuilder get _$this {
     if (_$v != null) {
       _user = _$v.user?.toBuilder();
+      _news = _$v.news?.toBuilder();
       _events = _$v.events?.toBuilder();
       _sessions = _$v.sessions?.toBuilder();
       _$v = null;
@@ -165,6 +182,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$result = _$v ??
           new _$AppState._(
               user: user.build(),
+              news: news.build(),
               events: events.build(),
               sessions: sessions.build());
     } catch (_) {
@@ -172,6 +190,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       try {
         _$failedField = 'user';
         user.build();
+        _$failedField = 'news';
+        news.build();
         _$failedField = 'events';
         events.build();
         _$failedField = 'sessions';

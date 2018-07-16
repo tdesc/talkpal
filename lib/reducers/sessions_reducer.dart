@@ -25,7 +25,9 @@ NestedReducerBuilder<AppState, AppStateBuilder, Sessions, SessionsBuilder>
 
 _updateSession(Sessions state, Action<Session> action, SessionsBuilder builder)
 {
-    print("session _updateSession");
+    if(action.payload.id == 'jo5btv7hE4LwwLxP9TUN')
+      print("#SessionReducer update ${action.payload.toString()}");
+      
     builder..map[action.payload.id] = action.payload;
 }
 

@@ -16,6 +16,10 @@ class _$SessionsActions extends SessionsActions {
       new ActionDispatcher<Session>('SessionsActions-remove');
   final ActionDispatcher<String> setCurrent =
       new ActionDispatcher<String>('SessionsActions-setCurrent');
+  final ActionDispatcher<Session> join =
+      new ActionDispatcher<Session>('SessionsActions-join');
+  final ActionDispatcher<Session> leave =
+      new ActionDispatcher<Session>('SessionsActions-leave');
   final ActionDispatcher<ParticipantPayload> updateParticipant =
       new ActionDispatcher<ParticipantPayload>(
           'SessionsActions-updateParticipant');
@@ -28,6 +32,8 @@ class _$SessionsActions extends SessionsActions {
     update.setDispatcher(dispatcher);
     remove.setDispatcher(dispatcher);
     setCurrent.setDispatcher(dispatcher);
+    join.setDispatcher(dispatcher);
+    leave.setDispatcher(dispatcher);
     updateParticipant.setDispatcher(dispatcher);
     removeParticipant.setDispatcher(dispatcher);
   }
@@ -40,6 +46,10 @@ class SessionsActionsNames {
       new ActionName<Session>('SessionsActions-remove');
   static final ActionName<String> setCurrent =
       new ActionName<String>('SessionsActions-setCurrent');
+  static final ActionName<Session> join =
+      new ActionName<Session>('SessionsActions-join');
+  static final ActionName<Session> leave =
+      new ActionName<Session>('SessionsActions-leave');
   static final ActionName<ParticipantPayload> updateParticipant =
       new ActionName<ParticipantPayload>('SessionsActions-updateParticipant');
   static final ActionName<ParticipantPayload> removeParticipant =

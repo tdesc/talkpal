@@ -12,7 +12,7 @@ import 'package:talkpal/actions/userPayload.dart';
 
 import 'package:talkpal/reducers/events_reducer.dart';
 import 'package:talkpal/reducers/sessions_reducer.dart';
-
+import 'package:talkpal/reducers/news_reducer.dart';
 // import 'dart:async';
 
 enum DialogDemoAction {
@@ -28,6 +28,7 @@ var reducerBuilder = new ReducerBuilder<AppState, AppStateBuilder>()
   // ..add(AppActionsNames.addEvent, updateEvent)
   // ..add(AppActionsNames.removeEvent, removeEvent)
   ..combineNested(createEventsReducer())
+  ..combineNested(createNewsReducer())
   ..combineNested(createSessionsReducer())
   ..combineMap(createEventSessionsReducer())
   ..combineMap(createParticipantsReducer());

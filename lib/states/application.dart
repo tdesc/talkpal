@@ -5,6 +5,7 @@ import 'package:built_value/serializer.dart';
 
 import 'package:talkpal/models/user.dart';
 
+import 'news.dart';
 import 'events.dart';
 import 'sessions.dart';
 
@@ -27,6 +28,8 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   static Serializer<AppState> get serializer => _$appStateSerializer;
 
   User get user;
+  
+  News get news;
   Events get events;
   Sessions get sessions;
   // StreamSubscription

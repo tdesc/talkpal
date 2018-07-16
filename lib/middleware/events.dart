@@ -18,7 +18,10 @@ MiddlewareBuilder<AppState, AppStateBuilder, AppActions>
 
 void _updateSession(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, 
                     ActionHandler next, Action<Session> action) async { 
-  next(action);            
+  next(action);
+ 
+  if(action.payload.id == 'jo5btv7hE4LwwLxP9TUN')          
+    print("EventsMiddleware $action");  
   api.actions.events.updateSession(action.payload);
 }
 

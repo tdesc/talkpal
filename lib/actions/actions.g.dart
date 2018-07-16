@@ -22,6 +22,7 @@ class _$AppActions extends AppActions {
       new ActionDispatcher<dynamic>('AppActions-startLoginFlow');
   final ActionDispatcher<Null> startRegisterFlow =
       new ActionDispatcher<Null>('AppActions-startRegisterFlow');
+  final NewsActions news = new NewsActions();
   final EventsActions events = new EventsActions();
   final SessionsActions sessions = new SessionsActions();
 
@@ -33,6 +34,7 @@ class _$AppActions extends AppActions {
     logoutAction.setDispatcher(dispatcher);
     startLoginFlow.setDispatcher(dispatcher);
     startRegisterFlow.setDispatcher(dispatcher);
+    news.setDispatcher(dispatcher);
     events.setDispatcher(dispatcher);
     sessions.setDispatcher(dispatcher);
   }
